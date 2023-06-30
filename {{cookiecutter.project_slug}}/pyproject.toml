@@ -2,12 +2,13 @@
 name = "{{cookiecutter.project_name}}"
 version = "{{cookiecutter.version}}"
 description = ""
-authors = ["{{cookiecutter.full_name}} {{cookiecutter.email}}"]
+authors = ["{{cookiecutter.full_name}} <{{cookiecutter.email}}>"]
 readme = "README.md"
 packages = [{include = "{{cookiecutter.project_slug}}", from = "src"}]
 
 [tool.poetry.dependencies]
 python = "^{{cookiecutter.python_version}}"
+pydantic = "^1.10.10"
 
 
 [tool.poetry.group.dev.dependencies]
@@ -21,3 +22,47 @@ pytest-asyncio = "^0.21.0"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 88
+
+[tool.isort]
+combine_as_imports = true
+profile = "black"
+
+[tool.mypy]
+plugins = [
+    "pydantic.mypy"
+]
+disallow_any_decorated = false
+disallow_any_generics = true
+disallow_incomplete_defs = true
+disallow_untyped_calls = true
+disallow_untyped_defs = true
+ignore_missing_imports = true
+no_implicit_reexport = true
+strict_equality = true
+warn_redundant_casts = true
+warn_unreachable = true
+warn_unused_configs = true
+warn_unused_ignores = true
+mypy_path = "stubs"
+
+[tool.pydantic-mypy]
+init_forbid_extra = true
+init_typed = true
+warn_required_dynamic_aliases = true
+warn_untyped_fields = true
+
+[[tool.mypy.overrides]]
+module = [
+    "tests.*"
+]
+ignore_errors = true
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+pythonpath = ["src"]
+addopts = [
+    "--import-mode=importlib",
+]
