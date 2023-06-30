@@ -1,0 +1,9 @@
+.git
+.mypy_cache
+.pytest_cache
+.cache
+.vscode
+.DS_Store
+htmlcov
+**/*.pyc
+.venv
