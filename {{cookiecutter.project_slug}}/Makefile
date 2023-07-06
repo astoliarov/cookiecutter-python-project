@@ -28,6 +28,7 @@ env/prepare:
 ##################
 # Code style tools
 ##################
+
 .PHONY: lint/black
 lint/black:
 	@echo "\033[92m< linting using black...\033[0m"
@@ -96,10 +97,15 @@ test: test/unit test/integration
 #############
 # Entrypoints
 #############
+UVICORN_PATH={{cookiecutter.project_slug}}.api.__main__:uvicorn_factory 
 
 .PHONY: run/server
 run/server:
 	$(POETRY) run python -m {{cookiecutter.project_slug}}.api
+
+.PHONY: run/server/gunicorn
+run/server/gunicorn:
+	cd src; python -m gunicorn $(UVICORN_PATH) --workers ${API_WORKERS} --worker-class uvicorn.workers.UvicornWorker --bind ${API_HOST}:${API_PORT}
 
 .PHONY: run/worker
 run/worker:
