@@ -21,17 +21,18 @@ jobs:
       - name: Generate
         run: make generate
 
-      - name: Open generated project
-        run: cd example_project
-
-      - name: Install poetry
+      - name: Install poetry from generated project
+        working-directory: ./example_project
         run: make poetry
 
-      - name: Install dependencies and dev dependencies
+      - name: Install dependencies and dev dependencies from generated project
+        working-directory: ./example_project
         run: make install-dev
 
-      - name: Run tests
+      - name: Run tests for generated project
+        working-directory: ./example_project
         run: make test
       
-      - name: Run linter
+      - name: Run linter for generated project
+        working-directory: ./example_project
         run: make lint
