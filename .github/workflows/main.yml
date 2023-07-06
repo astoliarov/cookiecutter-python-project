@@ -32,6 +32,10 @@ jobs:
         working-directory: ./example_project
         run: make install-dev
 
+      - name: Prepare env variables
+        working-directory: ./example_project
+        run: make env/prepare
+
       - name: Set environment variables
         working-directory: ./example_project
         run: direnv allow
