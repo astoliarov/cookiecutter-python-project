@@ -15,9 +15,8 @@ poetry: poetry/install
 install:
 	$(POETRY) install
 
-
 .PHONY: environment/install
-poetry: poetry install
+environment/install: poetry install
 
 
 ############
