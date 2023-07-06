@@ -6,6 +6,6 @@ ignore =
     W503
     # false positive, see: https://github.com/PyCQA/flake8-bugbear/issues/74
     B902
-max-line-length = 88
+max-line-length = 120
 max-complexity = 18
 select = B,C,E,F,W,T4,B9
