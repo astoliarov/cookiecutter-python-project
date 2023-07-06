@@ -4,6 +4,18 @@
 
 ## Development
 
+### Docker
+
+You need local `docker` and `docker-compose` to run tests and app in docker container
+
+To have env variables set for docker-compose
+
+1. Run `make env/prepare`
+
+#### Tests
+
+To run tests call `make in-docker/test`
+
 ### Local
 
 Tools that you will need:

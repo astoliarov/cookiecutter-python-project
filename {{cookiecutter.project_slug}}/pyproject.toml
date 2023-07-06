@@ -9,6 +9,9 @@ packages = [{include = "{{cookiecutter.project_slug}}", from = "src"}]
 [tool.poetry.dependencies]
 python = "^{{cookiecutter.python_version}}"
 pydantic = "^1.10.10"
+structlog = "^23.1.0"
+fastapi = "^0.99.1"
+uvicorn = "^0.22.0"
 
 
 [tool.poetry.group.dev.dependencies]
@@ -18,13 +21,14 @@ flake8 = "^6.0.0"
 mypy = "^1.4.1"
 pytest = "^7.4.0"
 pytest-asyncio = "^0.21.0"
+httpx = "^0.24.1"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.black]
-line-length = 88
+line-length = 120
 
 [tool.isort]
 combine_as_imports = true

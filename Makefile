@@ -27,3 +27,7 @@ environment/install: poetry install
 .PHONY: generate
 generate:
 	python -m cookiecutter . --no-input
+
+.PHONY: clean
+clean:
+	rm -r example_project
