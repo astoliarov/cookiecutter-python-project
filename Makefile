@@ -7,6 +7,7 @@ POETRY ?= poetry
 .PHONY: poetry/install
 poetry/install:
 	pip install poetry==1.5.1
+	$(POETRY) config settings.virtualenvs.create false
 
 .PHONY: poetry
 poetry: poetry/install
