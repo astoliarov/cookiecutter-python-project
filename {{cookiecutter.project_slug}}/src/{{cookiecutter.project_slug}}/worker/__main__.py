@@ -1,5 +1,4 @@
 import asyncio
-import functools
 import signal
 
 import structlog
@@ -10,7 +9,7 @@ from {{cookiecutter.project_slug}}.worker.worker import Worker
 logger = structlog.get_logger()
 
 
-def shutdown(_signal, worker):
+def shutdown(_signal: int, worker: Worker) -> None:
     logger.info("Received signal. Sending signal to stop worker...", signal=_signal)
     worker.stop()
 
