@@ -4,6 +4,7 @@ version = "{{cookiecutter.version}}"
 description = ""
 authors = ["{{cookiecutter.full_name}} <{{cookiecutter.email}}>"]
 readme = "README.md"
+packages = [{ include = "{{cookiecutter.project_slug}}", from = "src" }]
 
 [tool.poetry.dependencies]
 python = "^{{cookiecutter.python_version}}"
@@ -12,6 +13,7 @@ structlog = "^23.1.0"
 fastapi = "^0.99.1"
 uvicorn = "^0.22.0"
 gunicorn = "^20.1.0"
+sentry-sdk = {extras = ["fastapi"], version = "^1.27.1"}
 
 
 [tool.poetry.group.dev.dependencies]

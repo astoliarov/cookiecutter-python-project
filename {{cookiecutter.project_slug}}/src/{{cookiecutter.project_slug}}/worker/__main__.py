@@ -3,7 +3,7 @@ import signal
 
 import structlog
 
-from {{cookiecutter.project_slug}}.logs import setup_logs
+from {{cookiecutter.project_slug}}.infrastructure.core import setup_infrastructure
 from {{cookiecutter.project_slug}}.worker.worker import Worker
 
 logger = structlog.get_logger()
@@ -15,7 +15,7 @@ def shutdown(_signal: int, worker: Worker) -> None:
 
 
 if __name__ == "__main__":
-    setup_logs()
+    setup_infrastructure()
 
     worker = Worker()
 
