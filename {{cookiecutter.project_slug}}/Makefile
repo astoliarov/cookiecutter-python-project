@@ -153,7 +153,6 @@ local-deploy/application/down:
 IMAGE ?={{cookiecutter.project_slug}}
 TAG ?= latest
 
-
 .PHONY: docker/build
 docker/build:
 	docker build . \
