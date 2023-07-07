@@ -1,0 +1,13 @@
+version: "3"
+services:
+  app:
+    build: .
+    command:
+      - make
+      - run/server
+    profiles:
+      - "application"
+    env_file:
+      - .env
+    ports:
+      - ${API_PORT}:${API_PORT}
