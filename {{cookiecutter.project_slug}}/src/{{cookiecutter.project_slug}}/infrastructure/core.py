@@ -1,7 +1,7 @@
-from example_project.infrastructure.logs import setup_logs
-from example_project.infrastructure.sentry import setup_sentry
+from {{cookiecutter.project_slug}}.infrastructure.logs import setup_logs
+from {{cookiecutter.project_slug}}.infrastructure.sentry import setup_sentry
 
 
-def setup_infrastructure():
+def setup_infrastructure() -> None:
     setup_logs()
     setup_sentry()
