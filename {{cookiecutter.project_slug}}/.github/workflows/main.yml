@@ -1,0 +1,43 @@
+name: CI
+
+on: [push]
+
+jobs:
+  generate-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python {{cookiecutter.python_version}}
+        uses: actions/setup-python@v2
+        with:
+          python-version: '{{cookiecutter.python_version}}'
+          architecture: 'x64'
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Install direnv
+        run: sudo apt-get update && sudo apt-get install -y direnv
+
+      - name: Install poetry from generated project
+        run: make poetry
+
+      - name: Install dependencies and dev dependencies from generated project
+        run: make install-dev
+
+      - name: Prepare env variables
+        run: make env/prepare
+
+      - name: Set environment variables
+        run: direnv allow
+
+      - name: Run tests for generated project
+        run: make test
+
+      - name: Run linter for generated project
+        run: make lint
+
+      - name: Run build docker
+        run: make docker/build
