@@ -49,3 +49,6 @@ Now you are ready to run app or tests
 - run all tests `make test`
 - run only unit `make test/unit`
 - run only integration `make tests/integration`
+
+
+Project generated with [https://github.com/astoliarov/cookiecutter-python-project](https://github.com/astoliarov/cookiecutter-python-project)
