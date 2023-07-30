@@ -1,5 +1,10 @@
-# Cookiecutter python project
-Python service generator with FastAPI API and async background worker
+# Cookiecutter-FastAPI-Worker-Project
+
+Time-saving project generator for Python services. 
+
+It creates FastAPI APIs with built-in support for asynchronous background workers. 
+
+The template comes with structured logging, Dockerfiles for testing and deployment, and essential tools like black, isort, flake8, and mypy for code formatting and linting
 
 ## Features of generated project
 - Separate package for business logic + tests
