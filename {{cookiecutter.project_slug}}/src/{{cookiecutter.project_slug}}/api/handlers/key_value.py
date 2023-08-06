@@ -62,4 +62,3 @@ class KeyValueHandler:
     def register_routes(self, router: APIRouter) -> None:
         router.post("/kv", response_model=SetKeyResponse)(self.set_key)
         router.get("/kv", response_model=GetKeyResponse)(self.get_key)
-
