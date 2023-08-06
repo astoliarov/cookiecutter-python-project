@@ -41,6 +41,7 @@ Run all commands inside project directory
 1. Activate your environment created at previous step
 2. Install poetry `make poetry`
 3. Install dependencies + dev dependencies `make install-dev`
+4. (Optional; If you installed direnv) Run `make env/prepare` and then `direnv allow`
 
 Now you are ready to run app or tests
 
