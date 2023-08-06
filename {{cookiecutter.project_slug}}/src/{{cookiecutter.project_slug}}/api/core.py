@@ -25,4 +25,3 @@ def build_api() -> FastAPI:
     app.include_router(sys_router, prefix="/sys")
 
     return app
-
