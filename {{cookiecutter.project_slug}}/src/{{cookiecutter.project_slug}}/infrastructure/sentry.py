@@ -2,17 +2,15 @@ from typing import Optional
 
 import sentry_sdk
 import structlog
-from pydantic import BaseSettings
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 logger = structlog.getLogger()
 
 
 class SentrySettings(BaseSettings):
-    dsn: Optional[str] = None
+    model_config = SettingsConfigDict(frozen=True, env_prefix="SENTRY_")
 
-    class Config:
-        allow_mutation = False
-        env_prefix = "SENTRY_"
+    dsn: Optional[str] = None
 
 
 def setup_sentry() -> None:

@@ -36,7 +36,7 @@ class KeyValueHandler:
 
     async def set_key(self, request: SetKeyRequest) -> Response:
         response = request.to_response()
-        data = response.dict()
+        data = response.model_dump()
 
         logger.info("set_key", request=request)
 
@@ -57,8 +57,9 @@ class KeyValueHandler:
 
         response = GetKeyResponse(key=key, value=value)
 
-        return JSONResponse(content=response.dict(), status_code=200)
+        return JSONResponse(content=response.model_dump(), status_code=200)
 
     def register_routes(self, router: APIRouter) -> None:
         router.post("/kv", response_model=SetKeyResponse)(self.set_key)
         router.get("/kv", response_model=GetKeyResponse)(self.get_key)
+

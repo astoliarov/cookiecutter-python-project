@@ -2,7 +2,7 @@ import logging
 from enum import StrEnum
 
 import structlog
-from pydantic import BaseSettings
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class LogLevelEnum(StrEnum):
@@ -27,11 +27,9 @@ name_to_level = {
 
 
 class LogsSettings(BaseSettings):
-    level: LogLevelEnum = LogLevelEnum.INFO
+    model_config = SettingsConfigDict(frozen=True, env_prefix="LOGS_")
 
-    class Config:
-        allow_mutation = False
-        env_prefix = "LOGS_"
+    level: LogLevelEnum = LogLevelEnum.INFO
 
 
 def setup_logs() -> None:
